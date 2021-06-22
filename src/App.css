@@ -34,6 +34,7 @@
 .Toolbar .ld {
   float: left;
   line-height: 40px;
+  font-size: 20px;
 }
 .Toolbar .ld span {
   color: #555;
