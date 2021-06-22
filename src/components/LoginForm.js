@@ -25,6 +25,7 @@ const Button = styled.button`
   border: none;
   border-radius: 8px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 const Label = styled.label`
@@ -55,15 +56,32 @@ const Right = styled.div`
   justify-content: center;
 `;
 
+const Error = styled.div`
+  color: #c0392b;
+  margin-top: 20px;
+  text-align: center;
+`;
+
 export default function LoginForm() {
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState();
   const email = useRef();
   const password = useRef();
   function submit() {
-    setBusy(true);
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email.current.value, password.current.value)
+    const _email = email.current.value;
+    const _password = password.current.value;
+    if (_email && _password) {
+      setBusy(true);
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(_email, _password)
+        .catch((err) => {
+          setBusy(false);
+          if (err.code === "auth/wrong-password" || err.code === "auth/user-not-found") {
+            setError("Invalid login");
+          }
+        });
+    }
   }
   function onKeyDown(e) {
     if (e.keyCode === 13) submit();
@@ -89,6 +107,7 @@ export default function LoginForm() {
               {busy ? <Loading small light /> : "Login"}
             </Button>
           </div>
+          {error && <Error>{error}</Error>}
         </div>
       </Right>
     </Container>

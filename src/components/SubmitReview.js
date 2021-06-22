@@ -13,14 +13,14 @@ export default function SubmitReview() {
   const user = useRef();
   const review = useRef();
   function submit() {
-    setBusy(true);
-    addReview(
-      review.current.value,
-      user.current.value,
-      new Date().valueOf()
-    ).then(() => {
-      history.push("/");
-    });
+    const _review = review.current.value;
+    const _user = user.current.value;
+    if (_review && _user) {
+      setBusy(true);
+      addReview(_review, _user, new Date().valueOf()).then(() => {
+        history.push("/");
+      });
+    }
   }
   return (
     <div className="SubmitReview">
@@ -43,11 +43,13 @@ export default function SubmitReview() {
             <option value="" disabled>
               Select user
             </option>
-            {users.filter(u => u.email !== auth.email).map((u) => (
-              <option key={u.id} value={u.email}>
-                {u.email}
-              </option>
-            ))}
+            {users
+              .filter((u) => u.email !== auth.email)
+              .map((u) => (
+                <option key={u.id} value={u.email}>
+                  {u.email}
+                </option>
+              ))}
           </select>
         </div>
         <div>
