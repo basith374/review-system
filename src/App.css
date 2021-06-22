@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+.Reviews {
+  width: 1000px;
+  margin: 0 auto;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Reviews .Table {
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Reviews table {
+  width: 100%;
+  border-collapse: collapse;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Reviews table th {
+  text-align: left;
+}
+.Reviews th {
+  border-bottom: 2px solid #ccc;
+}
+.Reviews th,
+.Reviews td {
+  line-height: 40px;
+  padding: 0 20px;
+}
+.Reviews tbody tr:nth-child(odd) td {
+  background: #efefef;
+}
+.Reviews tbody tr:last-child td {
+  padding: 0 20px 5px;
+}
+.Toolbar {
+  padding: 30px 0;
+  text-align: right;
+}
+.Toolbar .ld {
+  float: left;
+  line-height: 40px;
+}
+.Toolbar .ld span {
+  color: #555;
+}
+.Toolbar.left {
+  text-align: left;
+}
+.Toolbar button {
+  background: #ddd;
+  border: none;
+  cursor: pointer;
+  vertical-align: top;
+  border-radius: 4px;
+}
+.Toolbar button + button {
+  margin-left: 10px;
+}
+.Toolbar svg {
+  vertical-align: top;
+}
+.Toolbar .btn {
+  background: #2ecc71;
+  padding: 0 30px;
+  line-height: 40px;
+  color: #fff;
+}
+.Toolbar .pad {
+  padding: 10px 15px;
+}
+.SubmitReview {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.SubmitReview > div {
+  width: 500px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.SubmitReview select,
+.SubmitReview textarea,
+.SubmitReview .submit button {
+  width: 100%;
+  padding: 0 15px;
+  border-radius: 4px;
+}
+.SubmitReview select,
+.SubmitReview textarea {
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+}
+.SubmitReview textarea {
+  padding: 10px 15px;
+  height: 200px;
+  outline: none;
+}
+.SubmitReview select {
+  height: 40px;
+  background: #fff;
+}
+.SubmitReview .submit button {
+  background: #e67e22;
+  border: none;
+  line-height: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+.SubmitReview .title {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.SubmitReview label {
+  color: #222;
+  display: inline-block;
+  margin-bottom: 5px;
 }
